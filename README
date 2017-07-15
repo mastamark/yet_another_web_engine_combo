@@ -1,0 +1,15 @@
+yet_another_web_engine_combo
+-----------------------------
+
+Builds a docker image that's based on upstream php:5.6-apache with additional php modules for mysql/mysqli.
+
+This image will further modify apache2 to configure to TLS with success providing you mount your cert and key and provide env variables to their path.
+
+ENV SSL_CERT_PATH_AND_FILE=/path/inside/container/cert.crt
+ENV SSL_KEY_PATH_AND_FILE=/path/inside/container/cert.key
+
+This image sets independent web roots for http vs. https: 
+- /var/www/html/
+- /var/www/secure/
+
+You don't want to run this image if you don't specifically want https with a valid/real cert.
